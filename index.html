@@ -1,0 +1,19 @@
+<head>
+	<script src="index.js" async></script>
+	<link rel="stylesheet" href="/styles.css">
+</head>
+
+<body>
+	<div class="container">
+		<div>
+			<h2>Each of these buttons return an 8 digit hexadecimal code </br> when clicked.</h2>
+			<h2>Though every button displays a hex code, each button generates the code with a different approach.</h2>
+		</div>
+		<h1 id="display">-</h1>
+		<div class="buttons-container">
+			<button id="concatenate" onclick="concatenate_hex()">Concatenate</button>
+			<button id="tostring" onclick="convert_with_toString()">Convert toString</button>
+			<button id="manual" onclick="convert_manually()">Convert Manually</button>
+		</div>
+	</div>
+</body>
