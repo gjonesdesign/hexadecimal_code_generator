@@ -1,29 +1,29 @@
 # 8 Digit Hexadecimal Code Generator
 A hexadecimal code generator using vanilla javascript. Generating a code updates the site with the color that code represents.
 
-#Description
+# Description
 This site has 3 buttons, each of which when clicked will generate an 8 digit hexadecimal code via different approaches. Each function starts by creating a string "result" that contains the hexadecimal "0x" prefix. The remainder of the hex code is then generated and concatenated to the prefix using each functions individual approach. These are as follows:
 
-##Concatenate
+## Concatenate
 Generates 8 digits by concatenation. Loops 8 times, each iteration generating a random number from 0 - 15 that corresponds to the index of a hex digit in the digits array. This digit is then retrieved and concatenated to the hex string until 8 digits have been retrieved.
 
-##Convert toString
+## Convert toString
 Generates the hex by converting a number via toString. Randomly generates a number from 0 to the largest possible base 10 number that can be made with 8 digits of hexadecimal (4,294,967,295). Using javascript's built in conversion method, toString, convert the number to base 16. If the generated hexadecimal code is less than 8 digits, the beginning of the code is padded with 0 until it has reached 8 digits. 
 
-##Covert Manually
+## Covert Manually
 Generates the hex by converting manually. Functions identically to the toString method, instead replacing the toString method with manual a conversion algorithm. The algorithm is as follows: 
 
 Loops until the randomly generated number is 0, each loop modding the number by 16 and adding the remainder to the start of the raw_hex array. The number is then updated to the floor of the number divided by 16. When the number is finally equal to 0, much like in the concatenation approach, each value in the raw_hex array will correspond to the index of a hex digit in the digits array. This digit is then retrieved and concatenated to the hex string until 8 digits have been retrieved.
 
-##Constraints
+## Constraints
 The code follows a few basic restraints. They are as follows:
 
-###Duplicates
+### Duplicates
 This application must generate every possible code before returning a duplicate. 
 
 This is achieved by adding every generated code to an array. If a code is generated but exists in this array, the code is discarded and a new one is generated. If the array is equal to the max number of combinations available with an 8 digit hexadecimal code (2,562,890,625), we have exhausted all possible combinations and thus clear the array to allow for duplicates.
 
-###Sanitization
+### Sanitization
 This application must not print codes that create odd looking codes (such as repeating codes or stepping codes such as 0xAAAAAAAA or 0x01234567 respectively), or codes that contain anything that can be interpreted as words or phrases (including words that can be created using numbers representing letters, such as 0x0D15EA5E). 
 
 The process to achieve this was the longest to complete in this entire application, and involved multiple steps. It may have been possible to create an algorithm that checks for things that seem ~similar~ to a word (for example having a vowel before or after a consonant), but this approach seemed to be the simplest logically and more precise. The steps are as follow:
